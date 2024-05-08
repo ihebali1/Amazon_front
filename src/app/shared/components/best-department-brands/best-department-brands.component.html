@@ -1,0 +1,13 @@
+<div *ngIf="brands && brands.length > 0" class="ps-best-sale-brands ps-section--furniture card mb-4">
+    <div class="ps-container">
+      <h3>أفضل الماركات مبيعًا</h3>
+    </div>
+    <div class="ps-section__content container">
+      <ul class="ps-image-list">
+        <li *ngFor="let brand of brands">
+          <a routerLink="/public/brand/page/{{brand.id}}"><img src="{{server + brand.image.public_url}}" alt="" /></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

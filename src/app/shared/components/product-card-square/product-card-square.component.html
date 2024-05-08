@@ -1,0 +1,36 @@
+<div class="ps-product" [routerLink]="['/public/product', product.id]" [queryParams]="{ type: product?.type}">
+    <div class="ps-product__thumbnail">
+
+        <img height="150px" width="100px" *ngIf="product.type == 'SIMPLE_LISTING'" src="{{server + product?.primaryImage?.public_url}}" alt="" />
+        <img height="150px" width="100px" *ngIf="product.type == 'PARENT_LISTING'" src="{{server + product?.primaryImage?.public_url}}" alt="" />
+    
+       <!--
+        <ul class="ps-product__actions">
+            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
+            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+        </ul>
+       -->
+        
+    </div>
+    <div class="ps-product__container"><a class="ps-product__vendor" href="#"></a>
+        <div class="ps-product__content"><a [routerLink]="['/public/product', product.id]" [queryParams]="{ type: product?.type}" class="ps-product__title" >
+            {{product?.name}}
+        </a>
+            
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span>02</span>
+         
+            <p class="ps-product__price sale">${{product?.price}} <del>$1050.50 </del></p>
+        </div>
+        <div class="ps-product__content hover"><a class="ps-product__title" [routerLink]="['/public/product', product.id]" [queryParams]="{ type: product?.type}">
+            {{product?.name}}
+        </a>
+            <p class="ps-product__price sale">${{product?.price}} <del>$1050.50 </del></p>
+        </div>
+    </div>
+</div>

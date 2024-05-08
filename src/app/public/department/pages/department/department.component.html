@@ -1,0 +1,26 @@
+<div
+  class="ps-page--shop mt-4"
+  id="shop-categories"
+  style="background-color: white"
+>
+  <app-department-promotion [banners]="banners"></app-department-promotion>
+
+  <app-department-categories-grid
+    [parentCategories]="department?.parentCategories"
+  ></app-department-categories-grid>
+
+  <app-most-selling-brands-department   *ngIf="department"  [department]="department"></app-most-selling-brands-department>
+
+  <app-department-new-arrivals
+    *ngIf="department"
+    [parentCategories]="department?.parentCategories"
+    [department]="department"
+  ></app-department-new-arrivals>
+
+  <div class="ps-page--shop" id="shop-categories">
+    <app-category-featured-products-box
+      [category]="category"
+      *ngFor="let category of department?.parentCategories"
+    ></app-category-featured-products-box>
+  </div>
+</div>

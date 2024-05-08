@@ -1,0 +1,10 @@
+<div class="row" *ngIf="products && products.length > 0">
+    <h3 class="fw-bolder mb-4">المنتجات الجديدة الأكثر مبيعًا</h3>
+
+    <div *ngFor="let product of products" class="col-md-3 col-lg-2 col-6 mt-2">
+                         
+
+        <app-product-card [product]="product"></app-product-card>
+    </div>
+
+</div>

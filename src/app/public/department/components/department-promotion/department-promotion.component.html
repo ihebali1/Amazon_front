@@ -1,0 +1,16 @@
+<div class="ps-promotions">
+  <div class="container">
+    <div class="row">
+
+
+      <div  *ngFor="let banner of banners" class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div (click)="redirect(banner)">
+          <img src="{{server + banner.image.public_url}}" alt="..." />
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

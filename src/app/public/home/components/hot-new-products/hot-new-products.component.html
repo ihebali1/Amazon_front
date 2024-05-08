@@ -1,0 +1,670 @@
+<div *ngIf="hotProducts.length > 5" class="ps-block--product-box mb-4">
+  <div class="ps-block__header">
+    <h3 class="fw-bolder">المنتجات الجديدة الأكثر مبيعًا</h3>
+    <ul>
+      <li><a routerLink="/public/shop">عرض الكل</a></li>
+    </ul>
+  </div>
+  <div class="ps-block__content">
+    <div class="ps-block__left">
+      
+      <div class="ps-block__products ps-tab-root">
+       
+        <div class="ps-tabs">
+          <div class="ps-tab active" id="product-box-1">
+            <div class="row">
+              <div  *ngFor="let product of hotProducts" class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-6">
+                <app-product-card [product]="product"></app-product-card>
+              </div>
+             
+            </div>
+          </div>
+          <div class="ps-tab" id="product-box-2">
+            <div class="row">
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/3.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge">-25%</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Young Shop</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Sound Intone I65 Earphone White Version</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>02</span>
+                      </div>
+                      <p class="ps-product__price sale">
+                        $42.00 <del>$60.00 </del>
+                      </p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Sound Intone I65 Earphone White Version</a
+                      >
+                      <p class="ps-product__price sale">
+                        $42.00 <del>$60.00 </del>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/4.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge out-stock">Out Of Stock</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Global Office</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung Gear VR Virtual Reality Headset</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>01</span>
+                      </div>
+                      <p class="ps-product__price">$320.00</p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung Gear VR Virtual Reality Headset</a
+                      >
+                      <p class="ps-product__price">$320.00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/5.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge out-stock">Out Of Stock</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Global Office</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung UHD TV 24inch</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>01</span>
+                      </div>
+                      <p class="ps-product__price">$85.00</p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung UHD TV 24inch</a
+                      >
+                      <p class="ps-product__price">$85.00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/6.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge out-stock">Out Of Stock</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Global Store</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >EPSION Plaster Printer</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>01</span>
+                      </div>
+                      <p class="ps-product__price">$92.00</p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >EPSION Plaster Printer</a
+                      >
+                      <p class="ps-product__price">$92.00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ps-tab" id="product-box-3">
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/2.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge out-stock">Out Of Stock</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Global Office</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Xbox One Wireless Controller Black Color</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>01</span>
+                      </div>
+                      <p class="ps-product__price">$101.99</p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Xbox One Wireless Controller Black Color</a
+                      >
+                      <p class="ps-product__price">$101.99</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/3.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge">-25%</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Young Shop</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Sound Intone I65 Earphone White Version</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>02</span>
+                      </div>
+                      <p class="ps-product__price sale">
+                        $42.00 <del>$60.00 </del>
+                      </p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Sound Intone I65 Earphone White Version</a
+                      >
+                      <p class="ps-product__price sale">
+                        $42.00 <del>$60.00 </del>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/4.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge out-stock">Out Of Stock</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Global Office</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung Gear VR Virtual Reality Headset</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>01</span>
+                      </div>
+                      <p class="ps-product__price">$320.00</p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung Gear VR Virtual Reality Headset</a
+                      >
+                      <p class="ps-product__price">$320.00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="ps-product">
+                  <div class="ps-product__thumbnail">
+                    <a href="product-default.html"
+                      ><img src="assets/img/products/electronic/5.jpg" alt=""
+                    /></a>
+                    <div class="ps-product__badge out-stock">Out Of Stock</div>
+                    <ul class="ps-product__actions">
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add To Cart"
+                          ><i class="icon-bag2"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-placement="top"
+                          title="Quick View"
+                          data-toggle="modal"
+                          data-target="#product-quickview"
+                          ><i class="icon-eye"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Add to Whishlist"
+                          ><i class="icon-heart"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Compare"
+                          ><i class="icon-chart-bars"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="#">Global Office</a>
+                    <div class="ps-product__content">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung UHD TV 24inch</a
+                      >
+                      <div class="ps-product__rating">
+                        <select class="ps-rating" data-read-only="true">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option></select
+                        ><span>01</span>
+                      </div>
+                      <p class="ps-product__price">$85.00</p>
+                    </div>
+                    <div class="ps-product__content hover">
+                      <a class="ps-product__title" href="product-default.html"
+                        >Samsung UHD TV 24inch</a
+                      >
+                      <p class="ps-product__price">$85.00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ps-block__right">
+      <figure>
+        <figcaption>المنتجات التي تمت مشاهدتها مؤخرا</figcaption>
+        <div *ngFor="let history of products" class="ps-product--horizontal">
+          <div *ngIf="history.simpleProduct" class="ps-product__thumbnail">
+            <a href="product-default.html"
+              ><img
+                src="{{
+                  server + history.simpleProduct.primaryImage.public_url
+                }}"
+                alt=""
+            /></a>
+          </div>
+          <div *ngIf="history.parentListing" class="ps-product__thumbnail">
+            <a href="product-default.html"
+              ><img
+                src="{{
+                  server + history.parentListing.primaryImage.public_url
+                }}"
+                alt=""
+            /></a>
+          </div>
+
+          <div *ngIf="history.simpleProduct" class="ps-product__content">
+            <a
+              class="ps-product__title"
+              [routerLink]="['/public/product', history.simpleProduct.id]"
+              [queryParams]="{ type: history.simpleProduct?.type }"
+            >
+              {{ history?.simpleProduct?.name }}
+            </a>
+          </div>
+          <div *ngIf="history.parentListing" class="ps-product__content">
+            <a
+              class="ps-product__title"
+              [routerLink]="['/public/product', history.parentListing.id]"
+              [queryParams]="{ type: history.parentListing?.type }"
+            >
+              {{ history?.parentListing?.name }}
+            </a>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</div>

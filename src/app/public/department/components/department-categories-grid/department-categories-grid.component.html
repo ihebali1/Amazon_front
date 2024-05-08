@@ -1,0 +1,31 @@
+<div class="ps-top-categories mt-4 mb-2 pt-4" style="background-color: white;">
+  <div class="container">
+    <div class="ps-section__header">
+      <h3>أفضل الفئات مبيعا هذا الشهر</h3>
+    </div>
+    <div class="ps-section__content"></div>
+    <div class="row align-content-lg-stretch">
+      <div *ngFor="let parentCategory of parentCategories" class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+        <div class="ps-block--category-2 ps-block--category-auto-part" data-mh="categories">
+          <div class="ps-block__thumbnail">
+            <img src="{{ server + parentCategory.image.public_url }}" alt="" />
+          </div>
+          <div class="ps-block__content">
+            <h4>{{ parentCategory.arName }}</h4>
+            <ul>
+              <li *ngFor="let childCategory of parentCategory.childCategories">
+                <a routerLink="/public/shop" [queryParams]="{ childCategory: childCategory.id }">
+                  {{ childCategory.arName }}
+                </a>
+              </li>
+              <li class="more">
+                <a routerLink="/public/shop" [queryParams]="{ parentCategory: parentCategory.id }">المزيد<i
+                    class="icon-chevron-right"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

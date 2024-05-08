@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row">
+        <section class="header-chat" style="overflow-y:hidden;">
+            <span class="badge badge-warning">IN REVIEW</span>
+        </section>
+        <section class="chat">
+
+            <div #scrollMe style="overflow-y: scroll; height:400px;" class="messages-chat">
+                <div *ngFor="let message of messages">
+                    <div class="message text-only" *ngIf="message.user &&  message?.user?.id == connectedUserId">
+                        <div class="response">
+
+                            <p class="text mt-2" *ngIf="message.image">
+                                <img height="500px" width="500px" src="{{server + message.image.public_url}}">
+                            </p>
+                            <p class="text mt-2" *ngIf="message.video">
+                                <video height="500px" width="500px" src="{{server + message.video.public_url}}" controls> </video>
+                            </p>
+                            <p class="text" class="text mt-2">
+                                {{message.content}}
+                            </p>
+                        </div>
+                    </div>
+                    <p class="response-time time" *ngIf="message?.user?.id == connectedUserId"> 15h04</p>
+                    <div class="message" *ngIf="message.user && message?.user?.id != connectedUserId">
+                        <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+                            <div class="online"></div>
+                        </div>
+                        <p class="text">
+                            {{message.content}}
+                        </p>
+                    </div>
+
+                    <div class="message" *ngIf="message.admin">
+                        <div class="photo" style="background-image: url(https://cdn3.iconfinder.com/data/icons/ecommerce-filled-outline-2/64/21-Costumer_Service-512.png);">
+                            <div class="online"></div>
+                        </div>
+                        <p class="text">
+                            {{message.content}}
+                        </p>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="footer-chat">
+
+                <form [formGroup]="messageForm">
+
+
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Write your message</mat-label>
+                        <input formControlName="message" matInput type="text">
+
+
+                    </mat-form-field>
+                    <i (click)="sendMessage()" class=" mx-10 icon send fa fa-paper-plane-o clickable"></i>
+                </form>
+
+
+
+            </div>
+
+            <div class="footer-chat2">
+
+
+                <i (click)="fileInput.click()" class="icon fa fa-paperclip clickable mr-2" aria-hidden="true"> </i>
+                <input hidden="true" type="file" multiple accept="image/png, image/jpeg, image/jpg" max="3" maxlength="3" class="d-none" (change)="onImageInput($event)" #fileInput/>
+
+                <img *ngIf="image == null" height="50px" width="50px" class="rounded" src="assets/img/placeholder.png" />
+
+                <img *ngIf="image != null" (click)="fileInput.click()" height="50px" width="50px" class="rounded w-200 h-200" gdGridAlign="center" [src]="image" />
+
+                <i (click)="fileInput2.click()" class="icon fa fa-paperclip clickable mr-2" aria-hidden="true"></i>
+                <video *ngIf="video != null" height="50px" width="50px" (click)="fileInput.click()" controls class="rounded w-400 h-400" gdGridAlign="center" [src]="video"></video>
+
+
+                <img *ngIf="video == null" height="50px" width="50px" (click)="fileInput2.click()" class="rounded " gdGridAlign="center" src="assets/img/placeholder.png" />
+                <input hidden="true" type="file" multiple max="3" accept="video/mp4" maxlength="3" class="d-none" (change)="onVideoInput($event)" #fileInput2/>
+
+
+
+            </div>
+        </section>
+    </div>
+</div>

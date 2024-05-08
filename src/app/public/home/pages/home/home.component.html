@@ -1,0 +1,76 @@
+<div class="ps-page--shop" id="shop-categories">
+  <!--
+ <app-home-banner-slider></app-home-banner-slider>
+  -->
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="4000">
+        <img src="assets/img/slider/shop-default/1.jpg" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item" data-bs-interval="4000">
+        <img src="assets/img/slider/shop-default/2.jpg" class="d-block w-100" alt="..." />
+      </div>
+
+   
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12 col-xl-6" *ngFor="let department of departments">
+      <app-department-box [department]="department"></app-department-box>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-xl-6">
+      <app-top-deals [title]="'أفضل العروض اليوم'" [dealType]="'LIGHTDEAL'"></app-top-deals>
+    </div>
+    <div class="col-12 col-xl-6">
+      <app-top-deals [title]="'أفضل العروض هذا الأسبوع'" [dealType]="'WEEKDEAL'"></app-top-deals>
+    </div>
+  </div>
+
+  <app-best-department-brands></app-best-department-brands>
+  <div *ngIf="hotProducts?.length > 5" class="ps-block--product-box mb-4">
+    <div class="ps-block__header">
+      <h3 class="fw-bolder">المنتجات الجديدة الأكثر مبيعًا</h3>
+      <ul>
+        <li><a routerLink="/public/shop">عرض الكل</a></li>
+      </ul>
+    </div>
+
+    <carousel class="pt-2" dir="ltr" [arrows]="false">
+      <div *ngFor="let product of hotProducts" class="carousel-cell">
+        <img [src]="server + product.primaryImage.public_url" [routerLink]="['/public/product', product.id]"
+        [queryParams]="{ type: product?.type }">
+      </div>
+
+
+    </carousel>
+
+
+
+  </div>
+  <!--
+    @TODO ADD RECOMMENDED PRODUCTS HERE !!!
+  <app-hot-new-products></app-hot-new-products>
+  -->
+
+
+  <app-product-carousel-card *ngFor="let department of departments" [department]="department">
+  </app-product-carousel-card>
+
+
+  <!--
+  <app-banner-one></app-banner-one>
+  -->
+</div>

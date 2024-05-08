@@ -1,0 +1,71 @@
+<div *ngIf="products.length > 0" class="ps-block--container-hightlight mb-4" style="background-color: white ;">
+  <div class="ps-section__header" style="background-color: rgb(38, 40, 51)">
+    <h3 style="color: white">
+    {{title}}
+    </h3>
+  </div>
+  <div class="ps-section__content">
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6"   *ngFor="let product of products">
+        <div class="ps-product">
+          <div class="ps-product__thumbnail">
+            <a>
+              <img
+                *ngIf="product.product.parentListing == null"
+                width="100px" height="100px"
+                src="{{ server + product.product?.primaryImage?.public_url }}"
+                alt=""
+              />
+              <img
+                *ngIf="product.product.parentListing != null"
+                width="100px" height="100px"
+                src="{{
+                  server +
+                    product.product?.parentListing?.primaryImage?.public_url
+                }}"
+                alt=""
+              />
+            </a>
+            <div class="ps-product__badge">
+              -{{ getDiscountPercentage(product) }}%
+            </div>
+          </div>
+
+          <div class="ps-product__container">
+            <p class="ps-product__price sale">
+              ${{ product.dealPrice }} <del>${{ product.product.price }} </del
+              ><small>{{ getDiscountPercentage(product) }}% خصم</small>
+            </p>
+            <div class="ps-product__content">
+              <a
+                *ngIf="product.product.parentListing == null"
+                class="ps-product__title"
+                [routerLink]="['/public/product', product.product.id]"
+                [queryParams]="{ type: product?.product.type }"
+              >
+                {{ product.product.name }}
+              </a>
+              <a
+                *ngIf="product.product.parentListing != null"
+                class="ps-product__title"
+                [routerLink]="[
+                  '/public/product',
+                  product.product.parentListing.id
+                ]"
+                [queryParams]="{
+                  type: product?.product.parentListing.type,
+                  variation: product?.product.id
+                }"
+              >
+                {{ product.product.parentListing.name }}
+              </a>
+             
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

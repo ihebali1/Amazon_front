@@ -1,0 +1,62 @@
+<div class="ps-product" *ngIf="product">
+  <div class="ps-product__thumbnail">
+    <a><img
+
+        width="100px" height="100px"
+        src="{{ server + product?.primaryImage?.public_url }}"
+        alt=""
+        /></a>
+    <div *ngIf="productDeal" class="ps-product__badge">
+      -{{ getDiscountPercentage(productDeal) }}%
+    </div>
+  </div>
+
+  <div class="ps-product__container">
+    <a class="ps-product__vendor" href="#">
+      {{ product?.vendor?.businessInfo.storeName }}
+
+    </a>
+    <div>
+      <a
+        class="ps-product__title"
+        [routerLink]="['/public/product', product.id]"
+        [queryParams]="{ type: product?.type }">
+        {{ product?.name }}
+      </a>
+      <div *ngIf="ratingStatistcs">
+        <p *ngIf="ratingStatistcs.avgRating &&
+          ratingStatistcs.avgRating.avg_rating">
+          <span [ngClass]="{'checked':ratingStatistcs.avgRating.avg_rating>0}"
+            class="fa fa-star"></span>
+          <span [ngClass]="{'checked':ratingStatistcs.avgRating.avg_rating>1}"
+            class="fa fa-star"></span>
+          <span [ngClass]="{'checked':ratingStatistcs.avgRating.avg_rating>2}"
+            class="fa fa-star"></span>
+          <span [ngClass]="{'checked':ratingStatistcs.avgRating.avg_rating>3}"
+            class="fa fa-star"></span>
+          <span [ngClass]="{'checked':ratingStatistcs.avgRating.avg_rating>4}"
+            class="fa fa-star"></span>
+        </p>
+      </div>
+
+      <p
+        *ngIf="!productDeal && product.type == 'SIMPLE_LISTING'"
+        class="ps-product__price mt-1">
+        {{ product?.price }} دينار
+      </p>
+
+      <p
+        *ngIf="productDeal && product.type == 'SIMPLE_LISTING'"
+        class="ps-product__price sale mt-1">
+        {{ productDeal.dealPrice }} دينار
+        <del>{{ product.price }} دينار </del><small>{{
+          getDiscountPercentage(productDeal) }}% خصم</small>
+      </p>
+
+      <p *ngIf="product.type == 'PARENT_LISTING'" class="ps-product__price
+        mt-1">
+        {{ getLowerPrice(product) }} - {{ getHigherPrice(product) }} دينار
+      </p>
+    </div>
+  </div>
+</div>

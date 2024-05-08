@@ -1,0 +1,148 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<section class="ps-section--account ps-checkout">
+  <div class="container">
+    <div class="ps-section__content">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <form *ngIf="wishLists.length > 0" [formGroup]="wishForm">
+          <div class="ps-form__billing-info">
+            <h3 class="ps-form__heading">إضافة إلى قائمة الرغبات</h3>
+            <h5>
+              {{ data.product.name }}
+            </h5>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label> عندي </label>
+                  <input
+                    formControlName="has"
+                    class="form-control"
+                    type="number"
+                    placeholder="example: 6"
+                  />
+                  <div *ngIf="f['has'].errors && f['has'].touched">
+                    <div *ngIf="f['has'].errors['required']">
+                      <label class="input-error"> الكمية مطلوبة</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>أريد</label>
+                  <input
+                    formControlName="needs"
+                    class="form-control"
+                    type="number"
+                    placeholder="example: 6"
+                  />
+                  <div *ngIf="f['needs'].errors && f['needs'].touched">
+                    <div *ngIf="f['needs'].errors['required']">
+                      <label class="input-error"> الكمية مطلوبة </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label>التعليق</label>
+                  <input
+                    formControlName="comment"
+                    class="form-control"
+                    type="text"
+                    placeholder="example: so special"
+                  />
+                  <div *ngIf="f['comment'].errors && f['comment'].touched">
+                    <div *ngIf="f['comment'].errors['required']">
+                      <label class="input-error"> التعليق مطلوب</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>اسم قائمة الرغبات</label>
+
+                  <select formControlName="wishList" class="form-control">
+                    <option *ngFor="let wish of wishLists" [value]="wish.id">
+                      {{ wish.title }}
+                    </option>
+                  </select>
+                  <div *ngIf="f['wishList'].errors && f['wishList'].touched">
+                    <div *ngIf="f['wishList'].errors['required']">
+                      <label class="input-error">
+                        الرجاء تحديد قائمة الرغبات
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>أولوية</label>
+
+                  <select formControlName="priority" class="form-control">
+                    <option value="HIGH">عالية</option>
+
+                    <option value="MEDIUM">متوسط</option>
+
+                    <option value="LOW">منخفض</option>
+                  </select>
+                  <div *ngIf="f['priority'].errors && f['priority'].touched">
+                    <div *ngIf="f['priority'].errors['required']">
+                      <label class="input-error"> الأولوية مطلوبة </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="ps-section__footer">
+                <a (click)="addProductToWishList()" class="ps-btn ps-btn--sm">
+                  إرسال
+                </a>
+                <button
+                  class="btn btn-light mx-4 btn-lg"
+                  mat-button
+                  (click)="onNoClick()"
+                >
+                  إلغاء
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                (click)="closeAndRedirect()"
+                class="ps-btn ps-btn--sm mt-4"
+              >
+                قم بإنشاء قائمة رغبات جديدة
+              </button>
+            </div>
+          </div>
+        </form>
+        <h3 *ngIf="wishLists.length == 0" class="ps-form__heading mb-4">
+          لم تقم بإنشاء قائمة الرغبات الأولى الخاصة بك حتى الآن؟
+        </h3>
+
+        <button
+          *ngIf="wishLists.length == 0"
+          (click)="closeAndRedirect()"
+          class="ps-btn ps-btn--sm"
+        >
+          قم بإنشاء قائمة رغبات جديدة
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div mat-dialog-actions></div>

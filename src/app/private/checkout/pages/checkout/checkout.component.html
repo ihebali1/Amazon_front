@@ -1,0 +1,347 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="ps-section--shopping ps-shopping-cart">
+  <div class="container-fluid">
+
+    <div class="container">
+      <div class="card px-4">
+
+        <div class="card-body cart">
+          <div class="col-sm-12 empty-cart-cls text-center">
+            <img
+              src="https://cdn2.iconfinder.com/data/icons/e-commerce-211/128/02_Shopping_Bag-512.png"
+              width="130" height="130" class="img-fluid mb-4 mr-3">
+
+            <h3><strong>
+                إستكمال عملية الشراء
+              </strong></h3>
+          </div>
+
+
+          <section class="ps-section--account ps-checkout ">
+            <div class="container">
+              <div class="ps-section__content">
+                <form>
+                  <div class="ps-form__content">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="row">
+
+
+                          <div class="form-group">
+                            <h4>استخدم عنوان محفوظ</h4>
+                            <mat-form-field appearance="outline" class="w-100">
+                              <mat-select [(value)]="selectedAddress"
+                                [formControl]="address">
+                                <mat-option dir="ltr" *ngFor="let address of
+                                  userData.adresses" [value]="address">
+                                  <b>
+                                    {{address.firstName}} {{address.lastName}}
+                                  </b>
+
+                                  {{address.streetAddress}}
+                                  {{address.aptNumber}},
+                                  {{address.city}}, {{address.state.name}}
+                                  {{address.postalCode}}
+                                </mat-option>
+                                <mat-option [value]="''">
+
+                                  <p>
+                                    عنوان جديد
+                                  </p>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <div *ngIf="f['state'].errors &&
+                              f['state'].touched">
+                              <div *ngIf="f['state'].errors['required']">
+                                <label class="input-error"> الولاية إجبارية
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <form *ngIf="!address.value" [formGroup]="shippingForm">
+                          <div class="ps-form__billing-info">
+                            <h4 class="mb-4"> عنوان شحن جديد</h4>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <mat-form-field appearance="outline"
+                                    class="w-100">
+                                    <mat-label>الاسم الشخصي</mat-label>
+                                    <input matInput formControlName="firstName"
+                                      type="text"
+                                      placeholder="الاسم الشخصي" />
+                                    <div *ngIf="
+                                      f['firstName'].errors &&
+                                      f['firstName'].touched
+                                      ">
+                                      <div
+                                        *ngIf="f['firstName'].errors['required']">
+                                        <label class="input-error">
+                                          الاسم الاول اجباري
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <mat-form-field appearance="outline"
+                                    class="w-100">
+                                    <mat-label>اللقب</mat-label>
+                                    <input formControlName="lastName" matInput
+                                      type="text"
+                                      placeholder="اللقب" />
+                                    <div *ngIf="f['lastName'].errors &&
+                                      f['lastName'].touched">
+                                      <div
+                                        *ngIf="f['lastName'].errors['required']">
+                                        <label class="input-error">
+                                          الاسم الأخير اجباري
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <mat-form-field appearance="outline"
+                                    class="w-100">
+                                    <mat-label>عنوان الشارع</mat-label>
+                                    <input matInput
+                                      formControlName="streetAddress"
+                                      type="text"
+                                      placeholder="عنوان الشارع" />
+                                    <div *ngIf="
+                                      f['streetAddress'].errors &&
+                                      f['streetAddress'].touched
+                                      ">
+                                      <div
+                                        *ngIf="f['streetAddress'].errors['required']">
+                                        <label class="input-error">
+                                          عنوان الشارع اجباري
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <mat-form-field appearance="outline"
+                                    class="w-100">
+                                    <mat-label>رقم الشقة</mat-label>
+                                    <input formControlName="aptNumber" matInput
+                                      type="text" placeholder="رقم الشقة" />
+                                    <div *ngIf="
+                                      f['aptNumber'].errors &&
+                                      f['aptNumber'].touched
+                                      ">
+                                      <div
+                                        *ngIf="f['aptNumber'].errors['required']">
+                                        <label class="input-error">
+                                          رقم الشقة اجباري
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <mat-form-field appearance="outline"
+                                    class="w-100">
+                                    <mat-label>المدينة</mat-label>
+                                    <input matInput formControlName="city"
+                                      type="text"
+                                      placeholder="المدينة" />
+
+                                    <div *ngIf="f['city'].errors &&
+                                      f['city'].touched">
+                                      <div *ngIf="f['city'].errors['required']">
+                                        <label class="input-error"> المدينة
+                                          إجبارية
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+
+                                  <mat-form-field appearance="outline"
+                                    class="w-100">
+                                    <mat-label>الولاية</mat-label>
+                                    <mat-select
+                                      (selectionChange)="getShippingCost()"
+                                      formControlName="state"
+                                      [(value)]="selectedState">
+                                      <mat-option *ngFor="let state of states"
+                                        [value]="state.id">
+                                        {{ state.name }}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <div *ngIf="f['state'].errors &&
+                                    f['state'].touched">
+                                    <div *ngIf="f['state'].errors['required']">
+                                      <label class="input-error"> الولاية
+                                        إجبارية
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <mat-form-field appearance="outline"
+                                    class="w-100">
+                                    <mat-label>الرمز البريدي</mat-label>
+                                    <input matInput formControlName="postalCode"
+                                      type="text"
+                                      placeholder="الرمز البريدي" />
+                                    <div *ngIf="
+                                      f['postalCode'].errors &&
+                                      f['postalCode'].touched
+                                      ">
+                                      <div
+                                        *ngIf="f['postalCode'].errors['required']">
+                                        <label class="input-error">
+                                          الرمز البريدي إجباري
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+
+                              <div class="ps-checkbox">
+                                <input formControlName="saveAddress"
+                                  type="checkbox"
+                                  id="save-next-time" placeholder="" />
+                                <label for="save-next-time">حفظ العنوان للطلب
+                                  التالي؟</label>
+                              </div>
+
+                            </div>
+                          </div>
+                        </form>
+
+
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="ps-block--checkout-order">
+
+
+
+
+                          <div class="ps-block--shopping-total">
+                            <div class="ps-block__header">
+                              <p>
+                                <strong> تفاصيل تكلفة الشحن </strong>
+                              </p>
+                            </div>
+                            <div class="ps-block__content">
+                              <ul class="ps-block__product">
+                                <li *ngFor="let shippingCost of shippingCosts">
+                                  <span class="ps-block__shop">
+                                    اسم المتجر:
+                                    {{
+                                    shippingCost.vendor.businessInfo.storeName
+                                    }} </span><span style="color: rgb(255, 128,
+                                    0)"
+                                    class="ps-block__shipping">
+                                    تكلفة الشحن :  {{ shippingCost.cost }} دينار</span><span
+                                    class="ps-block__estimate">
+                                    تم شحنها من
+                                    <strong>{{ shippingCost.shippingFrom }}</strong>
+                                    <br>
+                                    <label *ngFor="
+                                      let product of shippingCost.products;
+                                      let i= index
+                                      ">
+                                      <a *ngIf="product.parentListing != null"
+                                        [routerLink]="[
+                                        '/public/product',
+                                        product.parentListing.id
+                                        ]" [queryParams]="{
+                                        type: product?.parentListing.type
+                                        }">
+                                        {{ i + 1 }}) {{
+                                        product?.parentListing.name
+                                        }}
+                                      </a>
+
+                                      <a *ngIf="product.parentListing == null"
+                                        [routerLink]="['/public/product',
+                                        product.id]"
+                                        [queryParams]="{ type: product?.type }">
+                                        {{ i + 1 }}) {{ product?.name }}
+                                      </a>
+                                    </label>
+                                  </span>
+                                </li>
+                              </ul>
+                              <h3 class="p-4">
+                                <span>
+                                  المجموع: {{ subTotal + shippingTotalPrice }}
+                                  دينار
+                                  سعودي</span>
+                              </h3>
+                            </div>
+                          </div>
+                          <form novalidate (ngSubmit)="createToken()"
+                            [formGroup]="stripeTest">
+                            <mat-form-field appearance="outline" class="w-100">
+                              <mat-label>
+                                الاسم الموجود على البطاقة</mat-label>
+                              <input matInput type="text" formControlName="name"
+                                placeholder="Ahmed Khalil" />
+                            </mat-form-field>
+
+                            <ngx-stripe-card (change)="onChange($event)"
+                              style="margin-top:
+                              20px" [options]="cardOptions"
+                              [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                            <div id="card-errors"></div>
+                            <button *ngIf="(showButton && !shippingForm.invalid)
+                              ||
+                              (showButton && this.selectedAddress)"
+                              style="margin-bottom:
+                              20px; margin-top: 20px"
+                              class="ps-btn ps-btn--fullwidth" type="submit">
+                              إستكمال عملية الشراء
+                            </button>
+                          </form>
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

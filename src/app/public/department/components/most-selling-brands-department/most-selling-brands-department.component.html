@@ -1,0 +1,25 @@
+<section
+  class="ps-medicine-brands-and-testimonial mb-4 mt-4"
+  style="background-color: white"
+>
+  <div class="row" style="padding: 40px;">
+    <section class="ps-medicine--section ps-medicine-brands">
+      <div class="ps-section__header">
+        <h3>أفضل الماركات مبيعا في القسم</h3>
+      </div>
+      <br>
+      <div class="ps-section__content">
+        <div class="ps-section__column" *ngFor="let brand of brands">
+          <article class="ps-block--medicine-brand">
+            <a routerLink="/public/brand/page/{{brand.id}}"
+              ><img height="140px" src="{{server + brand.image.public_url}}" alt=""
+            /></a>
+            <div class="ps-block__content"><a href="#">
+                {{brand.name}}
+            </a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

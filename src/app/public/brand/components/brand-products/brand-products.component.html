@@ -1,0 +1,32 @@
+<div class="row">
+    <h3 class="fw-bolder mb-4">
+        جميع المنتجات
+    </h3>     
+    <div class="ps-shopping ps-tab-root">
+        <div class="ps-shopping__header">
+            
+            <p>
+              <strong> {{ products.length }}</strong> المنتجات التي تم
+              العثور عليها
+            </p>
+            
+    <div class="ps-shopping__actions">
+              <select class="ps-select form-control" data-placeholder="فرز العناصر">
+                <option>ترتيب حسب الأحدث</option>
+                <option>الترتيب حسب الشعبية</option>
+                <option>رتب حسب متوسط التقييم</option>
+                <option>الترتيب حسب السعر: من الأقل إلى الأعلى</option>
+                <option>الترتيب حسب السعر: من الأعلى إلى الأقل</option>
+              </select>
+            </div>
+          
+            
+          </div>
+    </div>  
+
+
+    <div *ngFor="let product of products" class="col-md-3 col-lg-2 col-6 mt-2">
+ 
+        <app-product-card [product]="product"></app-product-card>
+    </div>
+</div>

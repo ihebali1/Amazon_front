@@ -1,0 +1,218 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<section class="ps-section--account ps-checkout">
+  <div class="container">
+    <div class="ps-section__content">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" style="overflow:scroll; height:500px;">
+        <form [formGroup]="shippingForm">
+          <div class="ps-form__billing-info">
+            <h3 class="ps-form__heading">اضف عنوان شحن جديد</h3>
+
+            <div class="row mt-4">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="w-100">
+                  <mat-label> الاسم الشخصي</mat-label>
+                  <input matInput  formControlName="firstName"  type="text" placeholder=" الاسم الشخصي" />
+                  <div *ngIf="
+                      f['firstName'].errors && f['firstName'].touched
+                    ">
+                    <div *ngIf="f['firstName'].errors['required']">
+                      <mat-label class="input-error"> الاسم الشخصي مطلوب </mat-label>
+                    </div>
+                  </div>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="w-100">
+                  <mat-label> اللقب</mat-label>
+                  <input matInput  formControlName="lastName"  type="text" placeholder=" اللقب" />
+                  <div *ngIf="f['lastName'].errors && f['lastName'].touched">
+                    <div *ngIf="f['lastName'].errors['required']">
+                      <mat-label class="input-error"> اللقب مطلوب </mat-label>
+                    </div>
+                  </div>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>عنوان الشارع</mat-label>
+                  <input matInput formControlName="streetAddress"  type="text" placeholder="عنوان الشارع" />
+                  <div *ngIf="
+                      f['streetAddress'].errors && f['streetAddress'].touched
+                    ">
+                    <div *ngIf="f['streetAddress'].errors['required']">
+                      <mat-label class="input-error"> عنوان الشارع مطلوب </mat-label>
+                    </div>
+                  </div>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>رقم الشقة</mat-label>
+                  <input matInput formControlName="aptNumber"  type="text" placeholder="رقم الشقة" />
+                  <div *ngIf="f['aptNumber'].errors && f['aptNumber'].touched">
+                    <div *ngIf="f['aptNumber'].errors['required']">
+                      <mat-label class="input-error"> رقم الشقة مطلوب </mat-label>
+                    </div>
+                  </div>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>المدينة</mat-label>
+                  <mat-select formControlName="city">
+                    <mat-option disabled>-- Makkah Province --</mat-option>
+                    <mat-option>Jeddah</mat-option>
+                    <mat-option>City of Makkah</mat-option>
+                    <mat-option>Ta'if</mat-option>
+                    <mat-option>Qunfudhah</mat-option>
+                    <mat-option>Laith</mat-option>
+                    <mat-option>Jumum</mat-option>
+                    <mat-option>Rabigh</mat-option>
+                    <mat-option>Khulays</mat-option>
+                    <mat-option>Ranyah</mat-option>
+                    <mat-option>Turbah</mat-option>
+                    <mat-option>Khurmah</mat-option>
+                    <mat-option>Kamil</mat-option>
+
+                    <mat-option disabled>-- Riyadh Province --</mat-option>
+                    <mat-option>City of Riyadh</mat-option>
+                    <mat-option>Kharj</mat-option>
+                    <mat-option>Duwaidmi</mat-option>
+                    <mat-option>Majma'ah</mat-option>
+                    <mat-option>Quwai'iyah</mat-option>
+                    <mat-option>Wadi ad-Dawasir</mat-option>
+                    <mat-option>'Afif</mat-option>
+                    <mat-option>Zulfi</mat-option>
+                    <mat-option>Dir'iyah</mat-option>
+                    <mat-option>Aflaj</mat-option>
+                    <mat-option>Hawtat Bani Tamim</mat-option>
+                    <mat-option>Muzahmiyah</mat-option>
+                    <mat-option>Sulayyil</mat-option>
+                    <mat-option>Shaqra'</mat-option>
+                    <mat-option>Rumah</mat-option>
+                    <mat-option>Dhurma</mat-option>
+                    <mat-option>Thadij</mat-option>
+                    <mat-option>Hariq</mat-option>
+                    <mat-option>Huraymila</mat-option>
+                    <mat-option>Ghat</mat-option>
+
+                    <mat-option disabled>-- Madinah Province --</mat-option>
+                    <mat-option>City of Madinah</mat-option>
+                    <mat-option>Qatif</mat-option>
+                    <mat-option>Khobar</mat-option>
+                    <mat-option>Hafr al-Batin</mat-option>
+                    <mat-option>Jubail</mat-option>
+                    <mat-option>Khafji</mat-option>
+                    <mat-option>Buqayq</mat-option>
+                    <mat-option>Na'iriyah</mat-option>
+                    <mat-option>Ra's Tanura</mat-option>
+                    <mat-option>Qaryat al-'Ulya</mat-option>
+
+                    <mat-option disabled>-- Eastern Province --</mat-option>
+                    <mat-option>City of Dammam</mat-option>
+                    <mat-option>Ahsa'</mat-option>
+                    <mat-option>Yanbu' al-Bahr</mat-option>
+                    <mat-option>Badr</mat-option>
+                    <mat-option>'Alula</mat-option>
+                    <mat-option>Mahd</mat-option>
+                    <mat-option>Henakiyah</mat-option>
+                    <mat-option>Khaybar</mat-option>
+
+                    <mat-option disabled>-- Al Baha Province --</mat-option>
+                    <mat-option>City of Baha</mat-option>
+                    <mat-option>Mukhwah</mat-option>
+                    <mat-option>Baljurashi</mat-option>
+                    <mat-option>Qilwah</mat-option>
+                    <mat-option>Mandaq</mat-option>
+                    <mat-option>Qari</mat-option>
+                    <mat-option>'Aqiq</mat-option>
+
+                    <mat-option disabled>-- Al Jawf Province --</mat-option>
+                    <mat-option>City of Sakaka</mat-option>
+                    <mat-option>Qurayyat</mat-option>
+                    <mat-option>Daumat</mat-option>
+
+                    <mat-option disabled>-- Northern Borders Province --</mat-option>
+                    <mat-option>City of 'Ar'ar</mat-option>
+                    <mat-option>Rafha</mat-option>
+                    <mat-option>Turaif</mat-option>
+                    </mat-select>
+                  <div *ngIf="f['city'].errors && f['city'].touched">
+                    <div *ngIf="f['city'].errors['required']">
+                      <mat-label class="input-error"> المدينة مطلوبة </mat-label>
+                    </div>
+                  </div>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+               
+               
+                  <mat-form-field  appearance="outline" class="w-100">
+                    <mat-label>الولاية</mat-label>
+                    <mat-select formControlName="state"
+                      [(value)]="selectedState">
+                      <mat-option *ngFor="let state of states" [value]="state.id">
+                        {{ state.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div *ngIf="f['state'].errors && f['state'].touched">
+                    <div *ngIf="f['state'].errors['required']">
+                      <mat-label class="input-error"> الولاية إجبارية </mat-label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>الرمز البريدي</mat-label>
+                  <input matInput formControlName="postalCode" ctype="text" placeholder="الرمز البريدي" />
+                  <div *ngIf="f['postalCode'].errors && f['postalCode'].touched">
+                    <div *ngIf="f['postalCode'].errors['required']">
+                      <mat-label class="input-error"> الرمز البريدي مطلوب </mat-label>
+                    </div>
+                  </div>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="ps-section__footer">
+                <a  mat-raised-button (click)="addAddress()" class="ps-btn ps-btn--sm">
+                  أضف العنوان
+                </a>
+
+                <a  mat-raised-button (click)="onNoClick()" class="mx-2 btn btn-light ps-btn--sm">
+                  إلغاء
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

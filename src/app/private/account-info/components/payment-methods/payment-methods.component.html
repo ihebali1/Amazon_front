@@ -1,0 +1,82 @@
+<div class="ps-section__right">
+    <div class="ps-section--account-setting">
+        <div class="ps-section__header">
+            <h3>Primary payment method</h3>
+        </div>
+        <div class="ps-section__content">
+            <div class="table-responsive">
+                <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+                <table class="table ps-table ps-table--invoices">
+                    <thead>
+                        <tr>
+                            <th>last 4</th>
+                            <th>Brand</th>
+                            <th>Expiry Date</th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let paymentMethod of paymentMethods">
+                            <td *ngIf="default  ==  paymentMethod.id" >
+                                {{paymentMethod?.card?.last4}} <span *ngIf="default  ==  paymentMethod.id" class="badge badge-success">Primary</span>
+                            </td>
+                            <td *ngIf="default  ==  paymentMethod.id" >
+                                {{paymentMethod?.card?.brand}}
+                            </td>
+                            
+                            <td *ngIf="default  ==  paymentMethod.id" >{{paymentMethod?.card?.exp_month}}/{{paymentMethod?.card?.exp_year}}</td>
+                            <td *ngIf="default  ==  paymentMethod.id" >
+                                <button  type="button" class="btn btn-danger spacing-button">Remove</button>
+     
+                            </td>
+                          
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="ps-section__header">
+            <h3>Saved payment methods</h3>
+        </div>
+        <div class="ps-section__content">
+            <div class="table-responsive">
+                <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+                <table class="table ps-table ps-table--invoices">
+                    <thead>
+                        <tr>
+                            <th>last 4</th>
+                            <th>Brand</th>
+                            <th>Expiry Date</th>
+                            <th>
+                               
+                            </th>
+                        
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let paymentMethod of paymentMethods">
+                            <td *ngIf="default  !=  paymentMethod.id">
+                                {{paymentMethod?.card?.last4}} <span *ngIf="default  ==  paymentMethod.id" class="badge badge-success">Primary</span>
+                            </td>
+                            <td *ngIf="default  !=  paymentMethod.id">
+                                {{paymentMethod?.card?.brand}}
+                            </td>
+                            
+                            <td *ngIf="default  !=  paymentMethod.id">{{paymentMethod?.card?.exp_month}}/{{paymentMethod?.card?.exp_year}}</td>
+                            <td *ngIf="default  !=  paymentMethod.id">
+                                <button  type="button" class="btn btn-danger spacing-button">Remove</button>
+                                <button  type="button" class="btn btn-primary spacing-button ">make as primary</button>
+                            </td>
+                          
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

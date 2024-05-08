@@ -1,0 +1,50 @@
+
+.progresses{
+    display: flex;
+        align-items: center;
+   }
+
+   .line-done{
+
+        width: 120px;
+    height: 6px;
+    background: #40c04b;
+   }
+
+   .line-todo{
+
+    width: 120px;
+height: 6px;
+background: #aeb3af;
+}
+
+   .line-white{
+
+    width: 120px;
+height: 6px;
+background: #ffffff;
+}
+
+   
+   .steps{
+
+    display: flex;
+    color: #fff;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+   }
+   .done{
+    background-color: #63d19e;
+   }
+   .doing{
+    background-color: #1891f3;
+   }
+   .todo{
+    background-color: #f1d32a;
+   }
+   

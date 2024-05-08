@@ -1,0 +1,41 @@
+<div class="ps-section__right">
+    <div class="ps-section--account-setting">
+        <div class="ps-section__header mb-2">
+            <h3>الإشعارات</h3>
+        </div>
+        <div class="ps-section__content">
+            <div class="table-responsive">
+                <table class="table ps-table ps-table--notification">
+                    <thead>
+                        <tr>
+                           
+                            <th>عنوان الإخطار</th>
+                            <th>الإخطار</th>
+                            <th>التاريخ</th>
+                    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let notif of notifications">
+                            <td>
+                                {{notif.notification.arTitle}}
+                            </td>
+
+                            <td>
+                                {{notif.notification.arContent}}
+                            </td>
+
+                           
+                        
+                            <td>
+                                {{notif.createdAt  | date: 'dd/MM/yyyy hh:mm a'}}
+                            </td>
+                         
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

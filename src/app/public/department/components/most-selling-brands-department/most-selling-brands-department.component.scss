@@ -1,0 +1,27 @@
+
+   .ps-medicine-brands .ps-block--medicine-brand {
+    margin-bottom: 50px;
+  }
+  
+   .ps-medicine-brands .ps-section__content {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: -50px;
+  }
+  
+   .ps-medicine-brands .ps-section__content > * {
+    flex-basis: 100%;
+    max-width: 50%;
+  }
+  
+  @media screen and (min-width: 768px) {
+     .ps-medicine-brands .ps-section__content > * {
+      max-width: 33.33333%;
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+     .ps-medicine-brands .ps-section__content > * {
+      max-width: 20%;
+    }
+  }

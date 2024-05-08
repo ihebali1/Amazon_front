@@ -1,0 +1,84 @@
+
+<div class="ps-product__content" *ngIf="products && products.length> 0">
+    <hr>
+    <div class="ps-block--bought-toggether">
+        <h3>
+            كثيرا ما يتم شراؤها معًا
+        </h3>
+        <div class="ps-block__content">
+            <div class="ps-block__items">
+                <div class="ps-block__item" *ngFor="let prod of products">
+                    <div class="ps-product ps-product--simple" *ngIf="prod.isSelected">
+                        <div class="ps-product__thumbnail">
+                            <a><img *ngIf="prod.parentListing"
+                                    src="{{server +
+                                    prod.parentListing.primaryImage.public_url}}"
+                                    alt=""></a>
+                            <a><img *ngIf="prod.parentListing == null"
+                                    src="{{server +
+                                    prod.primaryImage.public_url}}"
+                                    alt=""></a>
+                            <ul class="ps-product__actions">
+                                <li><a href="#" data-toggle="tooltip"
+                                        data-placement="top" title="Read More"><i
+                                            class="icon-bag2"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip"
+                                        data-placement="top" title="Quick View"><i
+                                            class="icon-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip"
+                                        data-placement="top" title="Add to
+                                        Whishlist"><i class="icon-heart"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip"
+                                        data-placement="top" title="Compare"><i
+                                            class="icon-chart-bars"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="ps-product__container">
+                            <div class="ps-product__content">
+                                <a *ngIf="prod.parentListing"
+                                    class="ps-product__title">
+                                    {{prod.parentListing.arName}}
+                                </a>
+                                <a *ngIf="prod.parentListing == null"
+                                    class="ps-product__title">
+                                    {{prod.arName}}
+                                </a>
+                                <p class="ps-product__price">
+                                    <span> {{prod.price}} دينار
+                                        سعودي</span> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="getTotal() !=
+                product.price"  class="ps-block__item ps-block__total">
+                    <p>إجمالي السعر :<strong> دينار{{getTotal()}}</strong></p>
+                    <button (click)="addToCart()"  mat-raised-button  class="ps-btn ps-btn--black text-white"
+                        href="#">
+                        أضف الكل إلى عربة التسوق
+                    </button>
+                </div>
+            </div>
+            <div class="ps-block__footer">
+                <div *ngFor="let product of products" class="ps-checkbox">
+                    <input class="form-control" type="checkbox"
+                        id="{{product.id}}" name="product-bought"
+                        [(ngModel)]="product.isSelected" />
+                    <label for="{{product.id}}"><strong> </strong>
+                        <a *ngIf="product.parentListing"
+                            class="ps-product__title">
+                            {{product.parentListing.arName}}
+                        </a>
+                        <a *ngIf="product.parentListing == null"
+                            class="ps-product__title">
+                            {{product.arName}}
+                        </a> <span> {{product.price}} دينار
+                            سعودي</span></label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

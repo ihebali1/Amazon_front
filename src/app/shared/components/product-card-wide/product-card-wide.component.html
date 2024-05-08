@@ -1,0 +1,37 @@
+<div class="ps-product ps-product--wide">
+    <div class="ps-product__thumbnail"><a [routerLink]="['/public/product', product.id]" [queryParams]="{ type: product?.type}" >
+        <img  *ngIf="product.type == 'SIMPLE_LISTING'" src="{{server + product?.primaryImage?.public_url}}" alt="" />
+        <img  *ngIf="product.type == 'PARENT_LISTING'" src="{{server + product?.primaryImage?.public_url}}" alt="" />
+    
+    </a>
+    </div>
+    <div class="ps-product__container">
+        <div class="ps-product__content">
+            <a class="ps-product__title" [routerLink]="['/public/product', product.id]" [queryParams]="{ type: product?.type}" >Anderson Composites – Custom Hood</a>
+            <div class="ps-product__rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span>02</span>
+            </div>
+            
+            <ul class="ps-product__desc">
+                <li> Unrestrained and portable active stereo speaker</li>
+                <li> Free from the confines of wires and chords</li>
+                <li> 20 hours of portable capabilities</li>
+                <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
+                <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
+            </ul>
+        </div>
+        <div class="ps-product__shopping">
+            <p class="ps-product__price sale">${{product?.price}} <del>$1050.50 </del></p>
+            <a *ngIf="product.type == 'SIMPLE_LISTING'" class="ps-btn" href="#">Add to cart</a>
+            <ul class="ps-product__actions">
+                <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
+                <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

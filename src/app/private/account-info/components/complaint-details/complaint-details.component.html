@@ -1,0 +1,190 @@
+<div class="container card">
+  <div class="content container-fluid bootstrap snippets bootdey">
+    <div class="row row-broken">
+      <div
+        class="col-sm-9 col-xs-12 chat"
+        style="overflow: hidden; outline: none"
+        tabindex="5001"
+      >
+      <h4>معرف الشكوى: {{ reportId }}</h4>
+      <h5>
+        حالة الشكوى: {{report?.status}} 
+      </h5>
+        <div class="col-inside-lg decor-default">
+         
+          <div
+            class="chat-body"
+            #scrollMe
+            style="overflow-y: scroll; height: 360px"
+          >
+            <div *ngFor="let message of messages">
+              <div
+                class="answer right"
+                *ngIf="message.user && message?.user?.id == connectedUserId"
+              >
+                <div class="avatar">
+                  
+              
+                </div>
+                <div class="name">
+               
+                </div>
+                <div class="text">
+                  <p class="text mt-2" *ngIf="message.image">
+                    <img
+                      height="500px"
+                      width="500px"
+                      src="{{ server + message.image.public_url }}"
+                    />
+                  </p>
+                  <p class="text mt-2" *ngIf="message.video">
+                    <video
+                      height="500px"
+                      width="500px"
+                      src="{{ server + message.video.public_url }}"
+                      controls
+                    ></video>
+                  </p>
+                  {{ message.content }}
+                </div>
+                <div class="time"></div>
+              </div>
+              <div
+                class="answer left"
+                *ngIf="
+                  message.admin ||
+                  (message.user && message?.user?.id != connectedUserId)
+                "
+              >
+                <div *ngIf="message.admin"  class="avatar">
+                  <img
+                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                  alt="User name"
+                />
+                
+                </div>
+                <div *ngIf="message.user"  class="avatar">
+                  <img
+                    src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                    alt="User name"
+                  />
+                
+                </div>
+                <div *ngIf="message.admin" class="name">
+                  فريق إدارة الطلبات
+                </div>
+                <div *ngIf="message.user" class="name">
+                  البائع
+                </div>
+                <div class="text">
+                  <p class="text mt-2" *ngIf="message.image">
+                    <img
+                      height="500px"
+                      width="500px"
+                      src="{{ server + message.image.public_url }}"
+                    />
+                  </p>
+                  <p class="text mt-2" *ngIf="message.video">
+                    <video
+                      height="500px"
+                      width="500px"
+                      src="{{ server + message.video.public_url }}"
+                      controls
+                    ></video>
+                  </p>
+                  {{ message.content }}
+                </div>
+                <div class="time"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="answer-add">
+            <div class="row">
+                <div class="col-3">
+                    <i
+                  (click)="fileInput.click()"
+                  class="icon fa fa-paperclip clickable mr-2"
+                  aria-hidden="true"
+                >
+                </i>
+                <input
+                  hidden="true"
+                  type="file"
+                  multiple
+                  accept="image/png, image/jpeg, image/jpg"
+                  max="3"
+                  maxlength="3"
+                  class="d-none"
+                  (change)="onImageInput($event)"
+                  #fileInput
+                />
+    
+                <img
+                  *ngIf="image == null"
+                  height="50px"
+                  width="50px"
+                  class="rounded"
+                  src="assets/img/placeholder.png"
+                />
+    
+                <img
+                  *ngIf="image != null"
+                  (click)="fileInput.click()"
+                  height="50px"
+                  width="50px"
+                  class="rounded w-200 h-200"
+                  gdGridAlign="center"
+                  [src]="image"
+                />
+    
+                <i
+                  (click)="fileInput2.click()"
+                  class="icon fa fa-paperclip clickable mr-2"
+                  aria-hidden="true"
+                ></i>
+                <video
+                  *ngIf="video != null"
+                  height="50px"
+                  width="50px"
+                  (click)="fileInput.click()"
+                  controls
+                  class="rounded w-400 h-400"
+                  gdGridAlign="center"
+                  [src]="video"
+                ></video>
+    
+                <img
+                  *ngIf="video == null"
+                  height="50px"
+                  width="50px"
+                  (click)="fileInput2.click()"
+                  class="rounded"
+                  gdGridAlign="center"
+                  src="assets/img/placeholder.png"
+                />
+                <input hidden="true" type="file" multiple max="3" accept="video/mp4" maxlength="3" class="d-none" (change)="onVideoInput($event)" #fileInput2/>
+    
+                </div>
+                <div class="col-9">
+                    <form [formGroup]="messageForm">
+                    <input formControlName="message" placeholder="اكتب رسالتك هنا" />
+
+                    <span (click)="sendMessage()" class="answer-btn answer-btn-2"> إرسال </span>
+                    </form>
+                </div>
+                
+            </div>
+            
+            
+          </div>
+          <div >
+          
+                
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

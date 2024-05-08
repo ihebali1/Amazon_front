@@ -1,0 +1,78 @@
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <div class="ps-section__header">
+      <h3>العروض الأسبوعية</h3>
+      <ul class="ps-section__links">
+        <li><a>عرض الكل</a></li>
+      </ul>
+    </div>
+    <div class="ps-section__content">
+      <div class="row">
+        <div
+          *ngFor="let product of products"
+          class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6"
+        >
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+              <a>
+                <img
+                  *ngIf="product.product.parentListing == null"
+                  height="200px"
+                  width="250px"
+                  src="{{ server + product.product?.primaryImage?.public_url }}"
+                  alt=""
+                />
+                <img
+                  *ngIf="product.product.parentListing != null"
+                  height="200px"
+                  width="250px"
+                  src="{{
+                    server +
+                      product.product?.parentListing?.primaryImage?.public_url
+                  }}"
+                  alt=""
+                />
+              </a>
+              <div class="ps-product__badge">
+                -{{ getDiscountPercentage(product) }}%
+              </div>
+            </div>
+
+            <div class="ps-product__container">
+              <p class="ps-product__price sale">
+                ${{ product.dealPrice }} <del>${{ product.product.price }} </del
+                ><small>{{ getDiscountPercentage(product) }}% خصم</small>
+              </p>
+              <div class="ps-product__content">
+                <a
+                  *ngIf="product.product.parentListing == null"
+                  class="ps-product__title"
+                  [routerLink]="['/public/product', product.product.id]"
+                  [queryParams]="{ type: product?.product.type }"
+                >
+                  {{ product.product.name }}
+                </a>
+                <a
+                  *ngIf="product.product.parentListing != null"
+                  class="ps-product__title"
+                  [routerLink]="['/public/product', product.product.parentListing.id]"
+                  [queryParams]="{ type: product?.product.parentListing.type, variation: product?.product.id }"
+                >
+                  {{ product.product.parentListing.name }}
+                </a>
+                <div class="ps-product__rating"></div>
+                <div
+                  class="ps-product__progress-bar mt-2 ps-progress"
+                  data-value="82"
+                >
+                  <div class="ps-progress__value"><span></span></div>
+                  <p>Sold:39</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

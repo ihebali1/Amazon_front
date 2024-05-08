@@ -1,0 +1,51 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<section class="ps-section--account ps-checkout">
+    <div class="container">
+        <div class="ps-section__content">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                <form [formGroup]="wishForm">
+                    <div class="ps-form__billing-info">
+                    
+                        <h3 class="ps-form__heading">إضافة قائمة جديدة</h3>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>عنوان قائمة الرغبات</label>
+                                    <input formControlName="title" class="form-control" type="text" placeholder="">
+                                    <div *ngIf="f['title'].errors && f['title'].touched">
+                                        <div *ngIf="f['title'].errors['required']">
+                                            <label class="input-error">
+                                                العنوان مطلوب
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                        </div>
+                        
+                        
+                       
+
+                        <div class="form-group">
+                            <div class="ps-section__footer"><a (click)="createWishList()" class="ps-btn ps-btn--sm">
+                                إرسال
+                            </a>
+                            <button  class="btn btn-light mx-4 btn-lg" mat-button (click)="onNoClick()">
+                                إلغاء
+                            </button></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<div mat-dialog-actions>
+   
+   
+  </div>
+  

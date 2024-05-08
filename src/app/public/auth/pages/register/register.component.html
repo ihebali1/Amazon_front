@@ -1,0 +1,131 @@
+<div class="ps-my-account">
+  <div class="container">
+    <form
+      class="ps-form--account ps-tab-root"
+      [formGroup]="signupForm"
+      (ngSubmit)="registerUser()">
+      <ul class="ps-tab-list">
+        <li><a [routerLink]="['/public/auth/login']">تسجيل الدخول</a></li>
+        <li class="active">
+          <a [routerLink]="['/public/auth/register']">إنشاء حساب</a>
+        </li>
+      </ul>
+      <div class="ps-tabs">
+
+        <div class="ps-tab active" id="register">
+          <div class="ps-form__content">
+            <h4>تسجيل حساب جديد</h4>
+            <div>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  الاسم الشخصي</mat-label>
+                <input matInput type="text"
+                  formControlName="firstName"
+                  type="text"
+                  placeholder="الاسم الشخصي">
+                <div *ngIf="f['firstName'].errors && f['firstName'].touched">
+                  <div *ngIf="f['firstName'].errors['required']">
+                    <label class="input-error"> الاسم الاول اجباري </label>
+                  </div>
+                </div>
+              </mat-form-field>
+
+
+
+            </div>
+            <div>
+
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  اللقب </mat-label>
+                <input matInput type="text"
+                  formControlName="lastName"
+                  type="text"
+                  placeholder="اللقب">
+                <div *ngIf="f['lastName'].errors && f['lastName'].touched">
+                  <div *ngIf="f['lastName'].errors['required']">
+                    <label class="input-error"> الاسم الأخير اجباري </label>
+                  </div>
+                </div>
+              </mat-form-field>
+
+
+
+            </div>
+            <div>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  البريد الإلكتروني </mat-label>
+                <input matInput type="email"
+                  formControlName="email"
+                  placeholder="عنوان البريد الالكترونى">
+
+              </mat-form-field>
+              <div *ngIf="f['email'].errors && f['email'].touched">
+                <div *ngIf="f['email'].errors">
+                  <label class="input-error"> البريد الإلكتروني اجباري </label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  رقم الهاتف
+                </mat-label>
+                <input matInput
+                  type="tel"
+                  formControlName="phone"
+                  placeholder="رقم الهاتف">
+
+                <div *ngIf="f['phone'].errors && f['phone'].touched">
+                  <div *ngIf="f['phone'].errors">
+                    <label class="input-error"> رقم الهاتف اجباري </label>
+                  </div>
+                </div>
+
+              </mat-form-field>
+
+
+            </div>
+            <div>
+
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  كلمة المرور
+                </mat-label>
+                <input matInput
+                  type="password"
+                  formControlName="password"
+                  placeholder="كلمة المرور">
+
+                  <div *ngIf="f['password'].errors && f['password'].touched">
+                    <div *ngIf="f['password'].errors">
+                      <label class="input-error"> كلمة المرور اجباري </label>
+                    </div>
+                  </div>
+
+              </mat-form-field>
+
+              
+            </div>
+            <div class="form-group submtit">
+              <button mat-raised-button class="ps-btn ps-btn--fullwidth">تسجيل
+                </button>
+            </div>
+          </div>
+          <div class="ps-form__footer">
+            <!--
+                         <p>Connect with:</p>
+                        <ul class="ps-list--social">
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                        -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

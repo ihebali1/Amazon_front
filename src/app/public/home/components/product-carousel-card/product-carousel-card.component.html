@@ -1,0 +1,20 @@
+<div *ngIf="products && products.length > 0" class="ps-product-list ps-product-list--2">
+  <div class="ps-section__header">
+    <h3 class="fw-bolder">
+      {{ department?.arName }}
+    </h3>
+    <ul class="ps-section__links">
+      <li><a routerLink="/public/shop">عرض الكل</a></li>
+    </ul>
+  </div>
+  <div class="ps-section__content">
+    <div class="row">
+      <div
+        *ngFor="let product of products"
+        class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6"
+      >
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </div>
+  </div>
+</div>

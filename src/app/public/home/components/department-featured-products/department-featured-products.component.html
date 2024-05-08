@@ -1,0 +1,23 @@
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <div class="ps-section__header">
+      <h3>
+        {{ department.name }}
+      </h3>
+      <ul class="ps-section__links">
+        <li><a  [routerLink]="['/public/shop']"
+          [queryParams]="{ department: department.id }">عرض الكل</a></li>
+      </ul>
+    </div>
+    <div class="ps-section__content">
+      <div class="row">
+        <div
+          *ngFor="let product of products"
+          class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6"
+        >
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

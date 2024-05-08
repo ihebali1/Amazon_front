@@ -1,0 +1,54 @@
+<div class="ps-section__right">
+    <div class="ps-section--account-setting">
+        <div class="ps-section__header">
+            <h3>
+                عناوين الشحن المحفوظة
+            </h3>
+        </div>
+        <div class="ps-section__content mt-4">
+            <div *ngIf="userData.adresses.length == 0" class="row">
+                <div class="col-md-6 col-12">
+                    <figure class="ps-block--address">
+                        <figcaption>عنوان الشحن</figcaption>
+
+                        <div class="ps-block__content">
+                            <p>لم تقم بإضافة أي عنوان بعد</p>
+
+                        </div>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="row">
+                <div *ngFor="let address of userData.adresses" class="col-md-3
+                    col-6 m-2">
+                    <mat-card>
+                        <mat-card-title>
+                            {{address.firstName}} {{address.lastName}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{address.state.name}} {{address.postalCode}}
+                        </mat-card-subtitle>
+                        <mat-card-content>
+                            {{address.streetAddress}} {{address.aptNumber}},
+                            {{address.city}}.
+                        </mat-card-content>
+                        <mat-card-actions>
+
+
+                            <button mat-raised-button color="warn"
+                                (click)="removeAddress(address.id)">حذف</button>
+                        </mat-card-actions>
+
+
+
+                    </mat-card>
+
+                </div>
+            </div>
+
+
+            <button (click)="openAddAddressDialog()" mat-raised-button class="ps-btn ps-btn--sm">إضافة</button>
+        </div>
+    </div>
+</div>

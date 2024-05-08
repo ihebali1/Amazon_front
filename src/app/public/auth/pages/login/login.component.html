@@ -1,0 +1,66 @@
+<div class="ps-my-account">
+  <div class="container">
+    <form
+      class="ps-form--account ps-tab-root"
+      [formGroup]="signinForm"
+      (ngSubmit)="loginUser()">
+      <ul class="ps-tab-list">
+        <li class="active">
+          <a [routerLink]="['/public/auth/login']">تسجيل الدخول</a>
+        </li>
+        <li><a [routerLink]="['/public/auth/register']">إنشاء حساب</a></li>
+      </ul>
+      <div class="ps-tabs">
+        <div class="ps-tab active" id="sign-in">
+          <div class="ps-form__content">
+            <h4>تسجيل الدخول إلى حسابك</h4>
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  البريد الإلكتروني </mat-label>
+                <input matInput type="email"
+                  formControlName="email"
+                  placeholder="عنوان البريد الالكترونى">
+
+              </mat-form-field>
+
+
+            </div>
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  البريد الإلكتروني </mat-label>
+                <input matInput  type="password"
+                formControlName="password"
+                placeholder="كلمة المرور">
+
+              </mat-form-field>
+
+            </div>
+            <a [routerLink]="['/public/auth/forgot']" class="mb-2"> هل نسيت كلمة
+              السر؟ </a>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group submtit">
+              <button mat-raised-button  class="ps-btn ps-btn--fullwidth">تسجيل الدخول</button>
+            </div>
+          </div>
+          <div class="ps-form__footer"></div>
+          <!--
+                        <div class="ps-form__footer">
+                        <p>Connect with:</p>
+                        <ul class="ps-list--social">
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    -->
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

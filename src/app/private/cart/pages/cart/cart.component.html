@@ -1,0 +1,212 @@
+<div class="ps-section--shopping ps-shopping-cart">
+  <div class="container">
+    <div class="">
+
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="card px-4">
+
+              <div class="card-body cart">
+                <div class="col-sm-12 empty-cart-cls text-center">
+                  <img *ngIf="getSubTotal((cart$ | async)?.cartItems) == 0"
+                    src="https://www.pngplay.com/wp-content/uploads/7/Cart-Transparent-PNG.png"
+                    width="130" height="130" class="img-fluid mb-4 mr-3">
+                    <img
+                    *ngIf="getSubTotal((cart$ | async)?.cartItems)>0"
+                    src="https://cdn2.iconfinder.com/data/icons/e-commerce-211/128/02_Shopping_Bag-512.png"
+                    width="130" height="130" class="img-fluid mb-4 mr-3">
+
+
+                    
+                  <h3 *ngIf="getSubTotal((cart$ | async)?.cartItems) == 0"><strong>عربة التسوق فارغة</strong></h3>
+                  <h3 *ngIf="getSubTotal((cart$ | async)?.cartItems) > 0"><strong>عربة التسوق </strong></h3>
+                  <h4 *ngIf="getSubTotal((cart$ | async)?.cartItems) == 0"> عربة التسوق الخاصة بك فارغة ، يرجى الذهاب إلى صفحة التسوق</h4>
+                </div>
+              </div>
+
+
+              <div class="ps-section__content" *ngIf="getSubTotal((cart$ | async)?.cartItems)>0">
+                <div class="table-responsive p-4">
+                  <table class="table ps-table--shopping-cart ps-table--responsive">
+                    <thead>
+                      <tr>
+                        <th>اسم المنتج</th>
+                        <th>السعر</th>
+                        <th>الكمية</th>
+                        <th>المجموع</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of (cart$ | async)?.cartItems">
+                        <td data-label="اسم المنتج">
+                          <div class="ps-product--cart">
+                            <div class="ps-product__thumbnail">
+                              <a>
+                                <img *ngIf="item.product.parentListing == null" src="{{
+                                    server + item.product?.primaryImage.public_url
+                                  }}" alt="" />
+          
+                                <img *ngIf="item.product.parentListing != null" src="{{
+                                    server +
+                                      item.product?.parentListing?.primaryImage
+                                        ?.public_url
+                                  }}" alt="" />
+                              </a>
+                            </div>
+                            <div class="ps-product__content m-2">
+                              <a *ngIf="item.product.parentListing != null" [routerLink]="[
+                                  '/public/product',
+                                  item.product.parentListing.id
+                                ]" [queryParams]="{
+                                  type: item.product?.parentListing.type,
+                                  variation: item.product.id
+                                }">
+                                {{ item.product?.parentListing.name }}
+                              </a>
+          
+                              <a *ngIf="item.product.parentListing == null" [routerLink]="['/public/product', item.product.id]"
+                                [queryParams]="{ type: item.product?.type }">
+                                {{ item.product?.name }}
+                              </a>
+                            
+                            </div>
+                          </div>
+                        </td>
+                        <td class="price" data-label="السعر">
+                          $ {{ item.product?.price }}
+                        </td>
+                        <td data-label="الكمية">
+                          <div class="form-group--number">
+                            <button (click)="increaseQuantity(item.product.id)" class="up">
+                              +
+                            </button>
+                            <button (click)="decreaseQuantity(item.product.id)" class="down">
+                              -
+                            </button>
+                            <input disabled class="form-control" type="text" [(ngModel)]="item.quantity" />
+                          </div>
+                        </td>
+                        <td data-label="المجموع">
+                          $ {{ item.product?.price * item.quantity }}
+                        </td>
+                        <td (click)="removeItem(item.product.id)">
+                          <a><i class="icon-cross"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--
+          <div class="ps-section__cart-actions"><a class="ps-btn" [routerLink]="['/private/checkout']"><i class="icon-arrow-left"></i> Back to Shop</a><a class="ps-btn ps-btn--outline" href="shop-default.html"><i class="icon-sync"></i> Update cart</a></div>
+                      -->
+              </div>
+              <mat-divider style="margin: 25px" *ngIf="getSubTotal((cart$ | async)?.cartItems)>0"></mat-divider>
+              <div class="ps-section__footer" *ngIf="getSubTotal((cart$ | async)?.cartItems)>0">
+                <div class="row">
+                 
+                  <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                    <strong class="mb-4 fs-3"> احسب تكلفة الشحن </strong>
+                    <br>
+                    <br>
+                    <figure>
+                     
+          
+                      <div class="form-group">
+                        <mat-form-field appearance="outline" class="w-100">
+                          <mat-label> أختار الولاية </mat-label>
+                          <mat-select [(value)]="selectedState">
+                            <mat-option *ngFor="let state of states" [value]="state.id">
+                              {{ state.name }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+          
+                      <div class="form-group">
+                        <button mat-raised-button (click)="getShippingCost()" class="ps-btn">
+                          احسب التكلفة
+                        </button>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12"></div>
+                  <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 p-4">
+                    <div class="ps-block--shopping-total">
+                      <div class="ps-block__header">
+                        <p>
+                          <span> المجموع الفرعي: {{ subTotal }} دينار</span>
+                        </p>
+                        <br />
+                        <br />
+                      </div>
+                      <div class="ps-block__content">
+                        <ul class="ps-block__product">
+                          <li *ngFor="let shippingCost of shippingCosts">
+                            <span class="ps-block__shop">
+                              اسم المتجر:
+                              {{ shippingCost.vendor.businessInfo.storeName }} </span><span class="ps-block__shipping"
+                              style="color: rgb(255, 128, 0)">
+                              {{ shippingCost.cost }} دينار</span><span class="ps-block__estimate">
+                              تم شحنها من <strong>{{ shippingCost.shippingFrom }}</strong>
+                              <label *ngFor="
+                                  let product of shippingCost.products;
+                                  let i = index
+                                ">
+                                <a *ngIf="product.parentListing != null" [routerLink]="[
+                                    '/public/product',
+                                    product.parentListing.id
+                                  ]" [queryParams]="{ type: product?.parentListing.type }">
+                                  {{ i + 1 }}) {{ product?.parentListing.name }}
+                                </a>
+          
+                                <a *ngIf="product.parentListing == null" [routerLink]="['/public/product', product.id]"
+                                  [queryParams]="{ type: product?.type }">
+                                  {{ i + 1 }}) {{ product?.name }}
+                                </a>
+                              </label>
+                            </span>
+                          </li>
+                        </ul>
+                        <h3>
+                          <span>
+                            المجموع: {{ subTotal + shippingTotalPrice }} دينار</span>
+                        </h3>
+                      </div>
+                      <br>
+                    </div>
+                    <button mat-raised-button class="ps-btn ps-btn--fullwidth" [routerLink]="['/private/checkout']">
+                      انتقل إلى صفحة الدفع
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <a  class="ps-btn text-center mt-4 mx-auto mb-4  justify-content-center text-white"  mat-raised-button
+              [routerLink]="['/public/shop']" *ngIf="getSubTotal((cart$ |
+              async)?.cartItems) == 0">
+              انتقل إلى صفحة التسوق
+            </a>
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+   
+
+
+    </div>
+
+
+
+  </div>
+</div>

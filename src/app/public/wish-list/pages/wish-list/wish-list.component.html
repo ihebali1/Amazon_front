@@ -1,0 +1,55 @@
+<div class="ps-section--shopping ps-whishlist">
+  <div class="container">
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="card px-4">
+
+            <div class="card-body cart">
+              <div class="col-sm-12 empty-cart-cls text-center">
+                <img
+                  src="https://cdn3.iconfinder.com/data/icons/ikooni-flat-online-shopping/128/shopping2-07-512.png"
+                  width="130" height="130" class="img-fluid mb-4 mr-3">
+
+
+               
+
+                <h2><strong>قائمة الرغبات الخاصة بي</strong></h2>
+                <h3 *ngIf="wishLists.length == 0"><strong> لا توجد قائمة رغبات
+                    تم إنشاؤها!</strong>
+
+                </h3>
+                <br>
+                <button mat-raised-button class="ps-btn mt-4 text-white"
+                  (click)="openDialog()"> إضافة قائمة رغبات جديدة </button>
+
+
+                  <div *ngIf="wishLists.length> 0">
+                    <app-wish-list-details
+                      (newItemEvent)="getWishLists()"
+                      [wishList]="wishList"
+                      *ngFor="let wishList of wishLists"></app-wish-list-details>
+                  </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>

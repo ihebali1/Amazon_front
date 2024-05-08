@@ -1,0 +1,29 @@
+<div *ngIf="!(selectedParentCategory ==  null && products.length == 0)" class="ps-product-list ps-product-list--2 mt-4 mb-4">
+  <div class="container">
+    <div class="ps-section__header">
+      <h3 class="fw-bold">منتجات وصلت حديثًا</h3>
+      <ul class="ps-section__links">
+        <li (click)="getParentCategoryNewProducts(null)" class="px-4"><a [ngClass]="{'fw-bolder text-decoration-underline': selectedParentCategory ==  null}"  >
+            جميع الفئات
+        </a></li>
+        <li *ngFor="let parentCategory of parentCategories" >
+          <a [ngClass]="{'fw-bolder text-decoration-underline': selectedParentCategory ==  parentCategory.id}"  (click)="getParentCategoryNewProducts(parentCategory.id)">
+            {{ parentCategory?.arName }}
+          </a>
+        </li>
+
+        <li class="px-4"><a routerLink="/public/shop"> عرض المزيد </a></li>
+      </ul>
+    </div>
+    <div class="ps-section__content">
+      <div class="row">
+        <div
+          *ngFor="let product of products"
+          class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12"
+        >
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

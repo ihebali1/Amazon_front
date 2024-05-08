@@ -1,0 +1,13 @@
+
+<div class="container mt-4">
+    <div class="ps-block__thumbnail text-right">
+        <h3 class=" mt-2">
+            منتجاتنا من العلامة التجارية: {{brandInfo.name}}
+        </h3>
+        <img src="{{server + brandInfo.image.public_url}}" style="height: 200px;" alt=""></div>
+    <hr>
+    <app-brand-promotion-products [brand]="brand"></app-brand-promotion-products>
+    <app-brand-hot-products [brand]="brand"></app-brand-hot-products>
+    <br>
+    <app-brand-products [brand]="brand"></app-brand-products>
+</div>

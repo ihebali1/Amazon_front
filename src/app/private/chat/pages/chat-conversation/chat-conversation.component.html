@@ -1,0 +1,42 @@
+<div class="chat">
+    <div class="chat-header clearfix">
+       
+    </div>
+    <div class="chat-history" style="overflow-y: scroll; height: 450px">
+        <ul *ngFor="let m of message" class="m-b-0">
+            <li *ngIf="m.userSend.id == connectedUser" class="clearfix">
+                <div class="message-data text-right">
+                    <span class="message-data-time">10:10 AM, Today</span>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="avatar">
+                </div>
+                <div class="message other-message float-right">
+                    {{ m.content }} </div>
+            </li>
+            <li *ngIf="m.userSend.id !== connectedUser" class="clearfix">
+                <div class="message-data">
+                    <span class="message-data-time">10:12 AM, Today</span>
+                </div>
+                <div class="message my-message">
+                    {{ m.content }}</div>
+            </li>
+        </ul>
+    </div>
+
+
+    <form (ngSubmit)="createMessage()" [formGroup]="formChat">
+        <div class="input-group-prepend">
+          
+
+        </div>
+        <mat-form-field appearance="outline" class="w-100">
+        
+            <input type="text" matInput formControlName="content" placeholder="Enter text here...">
+            <button  [class.text-primary]="formChat.get('content')" [disabled]="!formChat.get('content')" class="ltr:mr-4 rtl:ml-4 ltr:ml-3 rtl:mr-3" mat-icon-button type="submit">
+                <i class="fa fa-send"></i>
+    </button>
+          </mat-form-field>
+
+      
+    </form>
+
+</div>

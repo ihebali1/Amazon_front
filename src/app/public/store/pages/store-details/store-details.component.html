@@ -1,0 +1,81 @@
+<div class="ps-vendor-store container">
+    <div class="row">
+        <div class="ps-block--vendor">
+
+            <!--  <div class="ps-block__thumbnail"><img src="assets/img/vendor/vendor-store.jpg" alt=""></div> -->
+            <div class="ps-block__container">
+                <div class="ps-block__header">
+                    <h4>
+                        {{store?.businessInfo.storeName}}
+                    </h4>
+
+                    <p><strong>85% إيجابي</strong> (562 تقييم)</p>
+                    <button mat-raised-button (click)="openDialog()">
+                        أرسل رسالة
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="ps-vendor-best-seller mt-4">
+        <div class="ps-section__header">
+            <h3>
+                أفضل المنتجات مبيعا
+            </h3>
+
+        </div>
+        <div class="ps-section__content">
+            <div class="row">
+                <div
+                    *ngFor="let product of storeHotProducts"
+                    class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6
+                    ">
+                    <app-product-card [product]="product"></app-product-card>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="ps-block--vendor-filter">
+
+        <form class="ps-form--search"
+            action="http://nouthemes.net/html/martfury/index.html"
+            method="get">
+            <input class="form-control" type="text"
+                placeholder="ابحث في هذا المتجر">
+            <button></button>
+        </form>
+
+    </div>
+
+
+
+    <div class="ps-shopping__header">
+        <p><strong> {{storeProducts?.length || 0}}</strong>
+            منتجات موجودة</p>
+
+    </div>
+    <div class="ps-shopping-product">
+        <div class="row">
+            <div *ngFor="let product of storeProducts"
+                class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6">
+                <app-product-card [product]="product"></app-product-card>
+            </div>
+
+        </div>
+    </div>
+    <div class="ps-pagination">
+
+    </div>
+
+
+
+</div>

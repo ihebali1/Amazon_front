@@ -1,0 +1,9 @@
+<div class="row" *ngIf="deals && deals.length > 0">
+    <h3 class="fw-bolder mb-4">
+        خصومات مميزة للعلامة التجارية
+    </h3>
+    <div *ngFor="let deal of deals" class="col-lg-2 col-md-3 col-sm-4 col-6">
+        <app-product-card [product]="deal.product"></app-product-card>
+    </div>
+
+</div>

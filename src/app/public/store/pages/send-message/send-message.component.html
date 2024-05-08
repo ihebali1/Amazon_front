@@ -1,0 +1,44 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<section class="ps-section--account ps-checkout">
+    <div class="container">
+        <div class="ps-section__content">
+            <form class="ps-form--checkout" action="http://nouthemes.net/html/martfury/index.html" method="get">
+                <div class="ps-form__content">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                            <form [formGroup]="form">
+                                <div class="ps-form__billing-info">
+
+                                    <h3 class="ps-form__heading">
+                                        أرسل رسالة
+                                    </h3>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>محتوى الرسالة</label>
+                                                <textarea formControlName="content" class="form-control" type="text">
+                                                </textarea>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-2">
+                                        <div class="ps-section__footer">
+                                            <a (click)="createMessage()" class="ps-btn ps-btn--sm">
+                                                إرسال
+                                        </a>
+                                            <button (click)="onNoClick()" class="btn btn-light btn-lg" mat-button>إلغاء</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

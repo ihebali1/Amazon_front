@@ -1,0 +1,131 @@
+<mat-card class="example-card">
+  <mat-card-title>
+    <h4>
+      {{ wishList?.title }}
+    </h4>
+  </mat-card-title>
+
+  <mat-card-content>
+    <div class="ps-section__content">
+      <h3 class="my-4"></h3>
+      <div class="table-responsive">
+        <table class="table ps-table--whishlist ps-table--responsive">
+          <thead>
+            <tr>
+              <th></th>
+              <th>اسم المنتج</th>
+              <th>سعر الوحده</th>
+              <th>عندي</th>
+              <th>احتاج</th>
+              <th>الأولوية</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let wishDetail of wishList.productWishDetails">
+              <td >
+                <a (click)="removeWishListItem(wishDetail.id)"
+                  ><i class="icon-cross"></i
+                ></a>
+              </td>
+              <td>
+                <div class="ps-product--cart">
+                  <div class="ps-product__thumbnail">
+                    <a
+                      href="product-default.html"
+                      *ngIf="wishDetail.product.parentListing == null"
+                      ><img
+                        src="{{
+                          server + wishDetail.product.primaryImage.public_url
+                        }}"
+                        alt=""
+                    /></a>
+                    <a
+                      href="product-default.html"
+                      *ngIf="wishDetail.product.parentListing != null"
+                      ><img
+                        src="{{
+                          server +
+                            wishDetail.product.parentListing.primaryImage
+                              .public_url
+                        }}"
+                        alt=""
+                    /></a>
+                  </div>
+                  <div class="ps-product__content">
+                    <a
+                      *ngIf="wishDetail.product.parentListing == null"
+                      [routerLink]="['/public/product', wishDetail.product.id]"
+                      [queryParams]="{ type: wishDetail.product?.type }"
+                    >
+                      {{ wishDetail.product.name }}
+                    </a>
+                    <a
+                      *ngIf="wishDetail.product.parentListing != null"
+                      [routerLink]="[
+                        '/public/product',
+                        wishDetail.product.parentListing.id
+                      ]"
+                      [queryParams]="{
+                        type: wishDetail.product?.parentListing?.type
+                      }"
+                    >
+                      {{ wishDetail.product.parentListing.name }}
+                    </a>
+                    <p *ngIf="wishDetail.product.parentListing != null">
+                      تباع من قبل:
+                      <strong>
+                        {{
+                          wishDetail.product.parentListing.vendor.businessInfo
+                            .storeName
+                        }}
+                      </strong>
+                    </p>
+                    <p *ngIf="wishDetail.product.parentListing == null">
+                      تباع من قبل:
+                      <strong>
+                        {{
+                          wishDetail.product.vendor.businessInfo
+                            .storeName
+                        }}
+                      </strong>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                $ {{ wishDetail.product.price }}
+              </td>
+              <td>
+                <span class="ps-tag ps-tag--in-stock">
+                  {{ wishDetail.has }}
+                </span>
+              </td>
+              <td>
+                <span class="ps-tag ps-tag--in-stock">
+                  {{ wishDetail.needs }}
+                </span>
+              </td>
+              <td class="ps-tag ps-tag--in-stock">{{ wishDetail.priority }}</td>
+              <td>
+                <button mat-raised-button  (click)="addToCart(wishDetail.product.id, wishDetail.needs)"
+                  >أضف إلى السلة</button
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      (click)="removeWishList(wishList.id)"
+      mat-icon-button
+      color="warn"
+      aria-label="Example icon button with a heart icon"
+    >
+      إزالة قائمة الرغبات <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

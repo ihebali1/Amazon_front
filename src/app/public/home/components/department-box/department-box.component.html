@@ -1,0 +1,29 @@
+<div class="ps-block--categories-box">
+  <div class="ps-block__header">
+    <h3 class="fw-bolder">
+      {{ department?.arName }}
+    </h3>
+    <ul>
+      <li><a  [routerLink]="['/public/department/', department.id]"
+        [queryParams]="{ department: department.id }">عرض الكل</a></li>
+    </ul>
+  </div>
+  <div class="ps-block__content">
+    <div class="ps-block__banner">
+      <img src="assets/img/categories/electronic/large.jpg" alt="" />
+    </div>
+    <div
+      *ngFor="let parentCategory of department.parentCategories"
+      class="ps-block__item"
+    >
+      <a routerLink="/public/shop"  [queryParams]="{ parentCategory: parentCategory.id }" class="ps-block__overlay" ></a
+      ><img src="{{ server + parentCategory.image?.public_url }}" alt="" />
+      <p>
+        {{ parentCategory?.arName }}
+      </p>
+      <!--
+ <span>2 Items</span>
+      -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,296 @@
+<div class="ps-section__right container mt-4">
+  <div class="ps-section--account-setting">
+    <div class="ps-section__header">
+      <h3 class="mb-2">الطلب #{{ order?.orderId }}<strong> </strong></h3>
+      <div *ngIf="order.status == 'INDELIVERY'">
+        <div class="container d-flex justify-content-center align-items-center">
+          <div class="progresses">
+            <div class="steps done">
+              <span><i class="fa fa-check"></i></span>
+            </div>
+
+            <span class="line-done"></span>
+
+            <div class="steps done">
+              <span><i class="fa fa-check"></i></span>
+            </div>
+
+            <span class="line-todo"></span>
+
+            <div class="steps todo">
+              <span class="font-weight-bold">3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container d-flex justify-content-center align-items-center">
+          <div class="progresses">
+            <div>الطلب المدفوع</div>
+
+            <span class="line-white"></span>
+
+            <div>فى التوصيل</div>
+
+            <span class="line-white"></span>
+
+            <div>شحنت بنجاح</div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="order.status == 'ORDERED'">
+        <div class="container d-flex justify-content-center align-items-center">
+          <div class="progresses">
+            <div class="steps done">
+              <span><i class="fa fa-check"></i></span>
+            </div>
+
+            <span class="line-todo"></span>
+
+            <div class="steps todo">
+              <span><i class="fa fa-check"></i></span>
+            </div>
+
+            <span class="line-todo"></span>
+
+            <div class="steps todo">
+              <span class="font-weight-bold">3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container d-flex justify-content-center align-items-center">
+          <div class="progresses">
+            <div>الطلب المدفوع</div>
+
+            <span class="line-white"></span>
+
+            <div>فى التوصيل</div>
+
+            <span class="line-white"></span>
+
+            <div>شحنت بنجاح</div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="order.status == 'DELIVERED'">
+        <div class="container d-flex justify-content-center align-items-center">
+          <div class="progresses">
+            <div class="steps done">
+              <span><i class="fa fa-check"></i></span>
+            </div>
+
+            <span class="line-done"></span>
+
+            <div class="steps done">
+              <span><i class="fa fa-check"></i></span>
+            </div>
+
+            <span class="line-done"></span>
+
+            <div class="steps done">
+              <span class="font-weight-bold">3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container d-flex justify-content-center align-items-center">
+          <div class="progresses">
+            <div>الطلب المدفوع</div>
+
+            <span class="line-white"></span>
+
+            <div>فى التوصيل</div>
+
+            <span class="line-white"></span>
+
+            <div>شحنت بنجاح</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="ps-section__content mt-4">
+      <div class="row">
+        <div class="col-md-4 col-12">
+          <figure class="ps-block--invoice">
+            <figcaption class="fs-3"> {{ order?.shippingInfo.firstName }}
+              {{ order?.shippingInfo.lastName }}</figcaption>
+            <div class="ps-block__content fs-4">
+
+              <p>
+                عنوان الشحن : {{ order?.shippingInfo.aptNumber }}
+                {{ order?.shippingInfo.streetAddress }},
+                {{ order?.shippingInfo.city }},
+                <strong> {{ order?.shippingInfo?.state?.name }}, </strong>
+
+                {{ order?.shippingInfo.postalCode }}
+              </p>
+            </div>
+          </figure>
+        </div>
+        <div class="col-md-4 col-12">
+          <figure class="ps-block--invoice">
+            <figcaption class="fs-3">تكاليف الشحن</figcaption>
+            <div class="ps-block__content">
+              <p class="fs-4">
+                مصاريف النقل والتوصيل :
+                <strong>{{ order.shippingAmount }} دينار</strong>
+              </p>
+            </div>
+          </figure>
+        </div>
+        <div class="col-md-4 col-12">
+          <figure class="ps-block--invoice">
+            <figcaption class="fs-3">معلومات الدفع</figcaption>
+            <div class="ps-block__content fs-4">
+              <p>إجمالي المبلغ المدفوع : <strong>{{ order.shippingAmount +
+                  order.totalPrice }} دينار</strong></p>
+              <p>طريقة الدفع او السداد : Visa</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table ps-table">
+          <thead>
+            <tr>
+              <th>المنتج</th>
+              <th>السعر</th>
+              <th>الكمية</th>
+              <th>المبلغ الإجمالي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orderItem of order?.orderItems">
+              <td>
+                <div class="ps-product--cart">
+                  <div class="ps-product__thumbnail">
+                    <a
+                      [routerLink]="['/public/product', orderItem.product.id]"
+                      [queryParams]="{ type: orderItem.product?.type }">
+                      <img
+                        *ngIf="orderItem.product.parentListing == null"
+                        src="{{
+                        server + orderItem.product?.primaryImage.public_url
+                        }}"
+                        alt=""
+                        />
+
+                      <img
+                        *ngIf="orderItem.product.parentListing != null"
+                        src="{{
+                        server +
+                        orderItem.product?.parentListing?.primaryImage
+                        ?.public_url
+                        }}"
+                        alt=""
+                        />
+                    </a>
+                  </div>
+                  <div class="ps-product__content m-2">
+                    <a
+                      [routerLink]="[
+                      '/public/product/',
+                      orderItem?.product?.id
+                      ]"
+                      [queryParams]="{ type: orderItem.product?.type }">
+                      {{ orderItem?.product?.name }}
+                    </a>
+
+                    <a
+                      *ngIf="orderItem.product.parentListing != null"
+                      [routerLink]="[
+                      '/public/product',
+                      orderItem?.product?.parentListing?.id
+                      ]"
+                      [queryParams]="{
+                      type: orderItem.product.parentListing?.type,
+                      variation: orderItem.product.id
+                      }">
+                      {{ orderItem.product?.parentListing.name }}
+                    </a>
+
+                    <a
+                      *ngIf="orderItem.product.parentListing == null"
+                      [routerLink]="['/public/product', orderItem.product.id]"
+                      [queryParams]="{ type: orderItem.product?.type }">
+                      {{ orderItem.product?.name }}
+                    </a>
+
+                    <p *ngIf="orderItem.product.parentListing != null">
+                      تم بيعها من قبل: <strong
+                        [routerLink]="[
+                        '/public/store/',
+                        orderItem?.product?.parentListing.vendor?.id
+                        ]">
+                        {{
+                        orderItem?.product?.parentListing.vendor?.businessInfo
+                        .storeName
+                        }}
+                      </strong>
+                    </p>
+
+                    <p *ngIf="orderItem.product.parentListing == null">
+                      تم بيعها من قبل: <strong
+                        [routerLink]="[
+                        '/public/store/',
+                        orderItem?.product?.vendor?.id
+                        ]">
+                        {{ orderItem?.product?.vendor?.businessInfo.storeName }}
+                      </strong>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span> {{ orderItem.itemPrice }} <i>دينار</i></span>
+              </td>
+              <td>
+                {{ orderItem.quantity }}
+              </td>
+              <td>
+                <span>
+                  {{ orderItem.itemPrice * orderItem.quantity }}
+                  <i>دينار</i></span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+              <strong class="fs-3"> {{ order?.totalPrice }} <i>دينار</i> </strong>
+            </th>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="ps-section__footer">
+      <button
+        *ngIf="order.report == null && order.status == 'DELIVERED'"
+        class="btn btn-light btn-lg"
+        (click)="openDialog()">
+        الإبلاغ عن البائع
+      </button>
+    </div>
+
+    <div class="ps-section__footer">
+      <button
+        *ngIf="order.report != null"
+        class="btn btn-light btn-lg"
+        [routerLink]="['/private/complaints/'+order.report.id]">
+        عرض تفاصيل شكواك
+      </button>
+    </div>
+
+    <br />
+    <div class="ps-section__footer">
+      <button mat-raised-button class="ps-btn ps-btn--sm text-white" [routerLink]="['/private/account/invoices']">رجوع
+        إلى الفواتير</button>
+    </div>
+  </div>
+</div>
